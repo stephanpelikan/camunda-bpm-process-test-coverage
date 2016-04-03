@@ -1,0 +1,5 @@
+org.camunda.bpm.extension.process_test_coverage.bpmn
+org.camunda.bpm.extension.process_test_coverage.junit.rules
+org.camunda.bpm.extension.process_test_coverage.listeners
+org.camunda.bpm.extension.process_test_coverage.model
+org.camunda.bpm.extension.process_test_coverage.util
