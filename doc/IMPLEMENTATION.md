@@ -29,10 +29,10 @@ Refer to the UML to get a fast perspective on the coverage rule internals.
 
 ## UML
 
-![UML](class-diagram.png) 
+![UML](img/class-diagram.png) 
 
 ## Resources
 * Use the source, Luke.
 * [JavaDoc](https://camunda.github.io/camunda-process-test-coverage/javadoc)
 * [Contributing](CONTRIBUTING.md)
-* [Readme](README.md)
+* [Readme](../README.md)

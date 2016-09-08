@@ -49,17 +49,18 @@ public static ProcessEngineRule rule = TestCoverageProcessEngineRuleBuilder.crea
 Running your JUnit tests now leaves **html** files for inidividual test methods as well as whole test classes in your project's `target/process-test-coverage` folder. Just open one, check yourself - and have fun with your process tests! :smile:
 
 ## Further resources
-* [JavaDoc](https://camunda.github.io/camunda-process-test-coverage/javadoc)
 * [Issues](https://github.com/camunda/camunda-process-test-coverage/issues)
-* [Roadmap](#roadmap)
+* [Roadmap](https://github.com/camunda/camunda-process-test-coverage/milestones)
 * [Changelog](https://github.com/camunda/camunda-process-test-coverage/commits/master)
-* [Contributing](CONTRIBUTING.md)
+* [Contributing](/doc/CONTRIBUTING.md)
+* [JavaDoc](https://camunda.github.io/camunda-process-test-coverage/javadoc)
+* [Implementation](/doc/IMPLEMENTATION.md)
 
 ## Maintenance
 
 The software development team of [WDW eLab GmbH](http://www.wdw-elab.de) is responsible for the design and implementation of this project.
 
-![Screenshot](elab_logo.png)
+![Screenshot](/doc/img/wdw-elab.png)
 
 WDW eLab GmbH is an innovative IT company and has great experience with complex business support processes in complex IT environments. One of our specialties are customer support processes in telecommunications. We are proud to be an official Camunda BPM partner! Feel free to contact us via [Email](mailto:kontakt@wdw-elab.de)!
 
