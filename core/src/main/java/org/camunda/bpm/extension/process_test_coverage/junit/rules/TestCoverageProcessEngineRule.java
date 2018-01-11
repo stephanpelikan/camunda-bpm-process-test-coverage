@@ -199,12 +199,22 @@ public class TestCoverageProcessEngineRule extends ProcessEngineRule {
      * @param description
      */
     private void initializeMethodCoverage(Description description) {
+      
+        String deploymentIdForTestCoverage = deploymentId;
+        if (deploymentIdForTestCoverage==null) {
+          // use latest deployment as default
+          deploymentIdForTestCoverage = processEngine.getRepositoryService().createDeploymentQuery() //
+              .orderByDeploymenTime().desc() //
+              .listPage(0, 1) //
+              .get(0) //
+              .getId();
+        }
 
         // Not a @ClassRule run and deployments present
-        if (deploymentId != null) {
+        if (deploymentIdForTestCoverage != null) {
 
-            final List<ProcessDefinition> deployedProcessDefinitions = processEngine.getRepositoryService().createProcessDefinitionQuery().deploymentId(
-                deploymentId).list();
+            final List<ProcessDefinition> deployedProcessDefinitions = processEngine.getRepositoryService().createProcessDefinitionQuery() //
+                .deploymentId(deploymentIdForTestCoverage).list();
 
             final List<ProcessDefinition> relevantProcessDefinitions = new ArrayList<ProcessDefinition>();
             for (ProcessDefinition definition: deployedProcessDefinitions) {
@@ -214,7 +224,7 @@ public class TestCoverageProcessEngineRule extends ProcessEngineRule {
             }
 
             coverageTestRunState.initializeTestMethodCoverage(processEngine,
-                    deploymentId,
+                    deploymentIdForTestCoverage,
                     relevantProcessDefinitions,
                     description.getMethodName());
 
