@@ -134,6 +134,17 @@ public class TestCoverageProcessEngineRule extends ProcessEngineRule {
         initializeRunState(description);
 
         super.starting(description);
+        
+        // default: Use latest deployment
+        if (deploymentId==null) {
+          List<org.camunda.bpm.engine.repository.Deployment> deployments = processEngine.getRepositoryService().createDeploymentQuery() //
+              .orderByDeploymenTime().desc() //
+              .list(); //
+          if (deployments.size()>0) {
+            logger.info("Using latest deployment for test coverage: " + deployments.get(0));
+            deploymentId = deployments.get(0).getId();
+          }
+        }
 
         initializeMethodCoverage(description);
     }
@@ -201,14 +212,14 @@ public class TestCoverageProcessEngineRule extends ProcessEngineRule {
     private void initializeMethodCoverage(Description description) {
       
         String deploymentIdForTestCoverage = deploymentId;
-        if (deploymentIdForTestCoverage==null) {
-          // use latest deployment as default
-          deploymentIdForTestCoverage = processEngine.getRepositoryService().createDeploymentQuery() //
-              .orderByDeploymenTime().desc() //
-              .listPage(0, 1) //
-              .get(0) //
-              .getId();
-        }
+//        if (deploymentIdForTestCoverage==null) {
+//          // use latest deployment as default
+//          deploymentIdForTestCoverage = processEngine.getRepositoryService().createDeploymentQuery() //
+//              .orderByDeploymenTime().desc() //
+//              .listPage(0, 1) //
+//              .get(0) //
+//              .getId();
+//        }
 
         // Not a @ClassRule run and deployments present
         if (deploymentIdForTestCoverage != null) {
